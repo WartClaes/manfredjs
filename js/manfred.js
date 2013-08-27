@@ -4,10 +4,10 @@
     - center content in screen
     - place content where clicked
     + iframed content
-    - dynamic sizing cfr content width/height
+    + dynamic sizing cfr content width/height
     - overrule dynamic sizing with width/height properties
-    - titles on a link as caption
-    - youtube integration
+    + titles on a link as caption
+    + youtube integration
 */
 (function ($) {
     $.fn.manfred = function(options) {
@@ -15,13 +15,19 @@
     			speed : 200,
                 delay : 200,
                 scroll : false,
-                escape : true,
+                escClose : true,
                 bgclose: true,
                 bgcolor: "#888888",
-                bgopacity: '60'
+                bgopacity: '60',
+                width: 400,
+                height: 'auto',
+                autoSize: true
         	}, options ),
             backgroundColor = convertHex(settings.bgcolor, settings.bgopacity),
-    		el = $('<div />').attr('id','manfred').css({'display' : 'none', 'background' : backgroundColor}).html('<div id="manfred-content"></div>'),
+    		el = $('<div />').attr('id','manfred').css({
+                    'display' : 'none', 
+                    'background' : backgroundColor
+                }).html('<div id="manfred-content"></div>'),
     		target = this.attr('href'),
             $this = this;
         
@@ -37,22 +43,39 @@
 
         function getContent(target){
             if($this.hasClass('iframe')) {
-                return $('<iframe />').attr('src',target);
+                return {
+                    'html': $('<iframe />').attr('src',target).css({
+                        'width': settings.width,
+                        'height': settings.height
+                    })
+                };
             }
             if($this.hasClass('youtube')){
-                return $('<iframe />').attr({
-                    'src': target,
-                    'width': 420,
-                    'height': 315,
-                    'frameborder': 0,
-                    'allowfullscreen': 'allowfullscreen'
-                });
-                // <iframe width="'src': target" height="315" src="//www.youtube.com/embed/fBTul0YzTww?rel=0" frameborder="0" allowfullscreen></iframe>
+                var vidWidth = settings.width;
+                
+                if(settings.autoSize)
+                    vidWidth = settings.width/1.33333;
+
+                return {
+                    'html': $('<iframe />').attr({
+                        'src': target,
+                        'width': settings.width,
+                        'height': vidWidth,
+                        'frameborder': 0,
+                        'allowfullscreen': 'allowfullscreen'
+                    })
+                }
             }
             if($(target).length) {
-                return $(target).html();
+                return {
+                    'html': $(target).html(),
+                    'width': $(target).width(), 
+                    'height': $(target).height()
+                };
             }
-            return target;
+            return {
+                'html': target
+            };
         }
     
         function openManfred(){
@@ -89,8 +112,17 @@
         }
     
         function updateManfred(content){
-            var $manfredContent = $('#manfred-content');
-            $manfredContent.html(content).css({'height':'auto','maxHeight':'75%'}).append('<a href="#close" id="close-manfred"><img src="img/close.png" /></a>');
+            var $manfredContent = $('#manfred-content'),
+                w = content.width,
+                h = content.height;
+                // // // // // // // // // // // // // // 
+            if(content.width === undefined && !settings.autoSize) w = settings.width;
+            if(content.height === undefined && !settings.autoSize) h = settings.height;
+            
+            $manfredContent.html(content.html).css({
+                'width' : w,
+                'height' : h
+            }).append('<a href="#close" id="close-manfred"><img src="img/close.png" /></a>');
         }
     
         function closeManfred(){

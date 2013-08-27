@@ -1,5 +1,7 @@
 $(function(){
 	hljs.initHighlightingOnLoad();
 
-	$('a').manfred();
+	$('a').manfred({
+		width: 400
+	});
 });

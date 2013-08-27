@@ -26,7 +26,15 @@
                 ...your kick-ass, easy to use, overlayer built on jQuery.
             </p>
             <p>
-                <a href="#code" class="btn">Try basic me</a>
+                <a href="test" class="btn">Try basic me</a>
+            </p>
+            <pre>
+                <code class="javascript">
+                    $('a').manfred();
+                </code>
+            </pre>
+            <p>
+                <a href="#inline" class="btn">Try div me</a>
             </p>
             <pre>
                 <code class="javascript">
@@ -39,17 +47,22 @@
             <p>
                 <a href="http://www.youtube.com/embed/fBTul0YzTww?rel=0" class="btn youtube">Try youtube!</a>
             </p>
-            <pre>
+            <pre id="inline">
                 <code>
                     <!-- <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#open"</span>&gt;</span> -->
                     $('a').manfred({
                         speed : 200,
                         delay : 200,
                         scroll : false,
-                        escape : true,
+                        escClose : true,
                         bgclose: true,
                         bgcolor: "#888888",
-                        bgopacity: '60'
+                        bgopacity: '60',
+                        width: 400,
+                        height: 'auto',
+                        maxWidth: 800,
+                        maxHeight: '75%',
+                        autoSize: true
                     });
                 </code>
             </pre>
