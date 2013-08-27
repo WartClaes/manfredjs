@@ -1,0 +1,24 @@
+#manfred {
+	height : 100%;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+#manfred-content {
+	width: 400px;
+	height: 400px;
+	background: #ffffff;
+	margin: 0 auto;
+	margin-top: 100px;
+	padding: 20px;
+	position: relative;
+	border-radius: 10px;
+}
+
+#close-manfred {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
