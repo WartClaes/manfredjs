@@ -5,7 +5,8 @@
     - place content where clicked
     + iframed content
     + dynamic sizing cfr content width/height
-    - overrule dynamic sizing with width/height properties
+    - sizing with data attributes
+    + overrule dynamic sizing with general width/height properties
     + titles on a link as caption
     + youtube integration
 */
@@ -115,9 +116,9 @@
             var $manfredContent = $('#manfred-content'),
                 w = content.width,
                 h = content.height;
-                // // // // // // // // // // // // // // 
-            if(content.width === undefined && !settings.autoSize) w = settings.width;
-            if(content.height === undefined && !settings.autoSize) h = settings.height;
+
+            if(typeof w === 'undefined' && settings.autoSize) w = settings.width;
+            if(typeof h === 'undefined' && settings.autoSize) h = settings.height;
             
             $manfredContent.html(content.html).css({
                 'width' : w,
