@@ -28,6 +28,9 @@
             <p>
                 <a href="test" class="btn">Try basic me</a>
             </p>
+            <p>
+                <a href="test" class="btn" data-manfred-width="600" data-manfred-height="600">Try some sizing with data attributes</a>
+            </p>
             <pre>
                 <code class="javascript">
                     $('a').manfred();
@@ -49,7 +52,6 @@
             </p>
             <pre id="inline">
                 <code>
-                    <!-- <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#open"</span>&gt;</span> -->
                     $('a').manfred({
                         speed : 200,
                         delay : 200,
@@ -60,8 +62,6 @@
                         bgopacity: '60',
                         width: 400,
                         height: 'auto',
-                        maxWidth: 800,
-                        maxHeight: '75%',
                         autoSize: true
                     });
                 </code>
