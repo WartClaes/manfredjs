@@ -14,7 +14,7 @@ $('a').manfred();
 
 Lots of settings, lots of fun.  
 
-```
+```javascript
 $('a').manfred({
 	autoSize: true,
 	bgclose: true,
