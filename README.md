@@ -87,8 +87,8 @@ Fixed widths can be set by adding data-manfred-width and/or data-manfred-height 
 Default dimensions can be set on init
 
 ```javascript
-width: auto|px
-height: auto|px
+width: auto | px
+height: auto | px
 ```
 
 ### The rest
