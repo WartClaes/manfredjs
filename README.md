@@ -5,7 +5,7 @@ Hi, I'm Manfred, your kick-ass, easy to use overlayer plugin for jQuery.
 No rocketscience, no crazy scripting skills required.   
 Just one line, leaves more time to party.
 
-```javacript
+```javascript
 $('a').manfred();
 ```
 
