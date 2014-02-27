@@ -5,7 +5,7 @@ Hi, I'm Manfred, your kick-ass, easy to use overlayer plugin for jQuery.
 No rocketscience, no crazy scripting skills required.   
 Just one line, leaves more time to party.
 
-```
+```javacript
 $('a').manfred();
 ```
 
@@ -30,3 +30,4 @@ $('a').manfred({
 });
 ```
 ## Easy to adapt
+Change the colors (bgcolor, bgopacity), the events (escape, bgclose), size (by data attribute or default in the javascript), ...
