@@ -15,7 +15,7 @@
 (function ($) {
     $.fn.manfred = function(options) {
     	var settings = $.extend({
-                autoSize: true,
+                autosize: true,
                 bgclose: true,
     			bgcolor: "#888888",
                 bgopacity: '60',
@@ -69,7 +69,7 @@
             if($this.hasClass('youtube')){
                 var vidWidth = settings.width;
                 
-                if(settings.autoSize)
+                if(settings.autosize)
                     vidHeight = settings.width/1.33333;
 
                 return {
@@ -142,8 +142,8 @@
                 w = content.width,
                 h = content.height;
 
-            if(typeof w === 'undefined' && settings.autoSize) w = settings.width;
-            if(typeof h === 'undefined' && settings.autoSize) h = settings.height;
+            if(typeof w === 'undefined' && settings.autosize) w = settings.width;
+            if(typeof h === 'undefined' && settings.autosize) h = settings.height;
 
             if(typeof $this.attr('data-manfred-width') !== 'undefined') w = $this.attr('data-manfred-width');
             if(typeof $this.attr('data-manfred-height') !== 'undefined') h = $this.attr('data-manfred-height');

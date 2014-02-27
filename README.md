@@ -16,9 +16,9 @@ Lots of settings, lots of fun.
 
 ```javascript
 $('a').manfred({
-	autoSize: true,
+	autosize: true,
 	bgclose: true,
-    bgcolor: "#888888",
+    bgcolor: '#888888',
     bgopacity: '60',
     delay : 200,
 	escape : true,
@@ -29,5 +29,86 @@ $('a').manfred({
 	width: 400
 });
 ```
-## Easy to adapt
-Change the colors (bgcolor, bgopacity), the events (escape, bgclose), size (by data attribute or default in the javascript), ...
+## Settings
+### Layout
+**bgcolor**  
+Background color of the overlay, rgba and hex are supported
+
+```javascript
+bgcolor: '#888888' | 'rgba(0,0,0,.7)'
+```
+**bgopacity**  
+Opacity of the background color. only used when bcolor is hex
+
+```javascript
+bgopacity: '60'
+```
+
+**position**  
+Where does Manfred stay?
+
+```javascript
+position: 'center'
+```
+
+### Events 
+**escape**  
+Enable/disable the escape key to close Manfred
+
+```javascript
+escape: true | false
+```
+
+**bgclose**  
+Enable/disable closing Manfred by clicking on the overlay
+
+```javascript
+bgclose: true | false
+```
+
+### Dimensions
+**autosize**
+Set dimensions according to content
+
+```javascript
+autosize: true | false
+```
+
+**By data attribute**  
+Fixed widths can be set by adding data-manfred-width and/or data-manfred-height on the element
+
+```html
+<a href="#" data-manfred-width="600" data-manfred-height="600">
+	click
+</a>
+```
+
+**On init**  
+Default dimensions can be set on init
+
+```javascript
+width: auto|px
+height: auto|px
+```
+
+### The rest
+**scroll**  
+Enable scroll inside Manfred
+
+```javascript
+scroll: true | false
+```
+
+**speed**  
+Set the fade in/out speed
+
+```javascript
+speed: 100
+```
+
+**delay**  
+The delay before Manfred disappears
+
+```javascript
+delay: 100
+```
