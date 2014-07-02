@@ -34,7 +34,7 @@
 
         // Check if background color is hex
         if(settings.bgcolor.indexOf('#') > -1){
-            var backgroundColor = convertHex(settings.bgcolor, settings.bgopacity);
+            backgroundColor = convertHex(settings.bgcolor, settings.bgopacity);
         }
 
         var $el = $('<div />').attr('id', 'manfred').css({
@@ -69,8 +69,9 @@
             if($this.hasClass('youtube')){
                 var vidWidth = settings.width;
                 
-                if(settings.autosize)
-                    vidHeight = settings.width/1.33333;
+                if(settings.autosize){
+                    vidHeight = settings.width / 1.33333;
+                }
 
                 return {
                     'html': $('<iframe />').attr({
@@ -100,16 +101,23 @@
     
         function openManfred(){
             // Hide all flash items. Just to be sure
-            if(settings.hideFlash) $('object,embed').css('visibility','hidden');
-        
+
+            if(settings.hideFlash) {
+                $('object,embed').css('visibility','hidden');
+            }
+
             // Allow scroll or not
-            if(settings.scroll) $('body').css('overflow','hidden');
+            if(settings.scroll) {
+                $('body').css('overflow','hidden');
+            }
             
             // open Manfred, focus on first input element
             $el.fadeIn(settings.speed, function() {
-                $('input:first', $el).focus();
+                if($('input:first', $el).length){
+                    $('input:first', $el).focus();
+                }
             });
-
+            
             // Center Manfred in screen
             positionManfred();
         
@@ -121,19 +129,22 @@
     
             // Close overlay with Esc key
             if(settings.escape){
-                $(document).keyup(function(e) {
-                    if (e.keyCode == 27) {
+                $(document).keyup(function(event) {
+                    if(event.keyCode == 27) {
                         closeManfred();
                     }
                 });
             }
 
             // Activate background close
-            $el.on('click', function(e) { 
-                if( e.target !== this ) {
+            $el.on('click', function(event) { 
+                if(event.target !== this) {
                     return;
                 }
-                if(settings.bgclose) closeManfred();
+
+                if(settings.bgclose) {
+                    closeManfred();
+                }
             });
         }
     
@@ -159,12 +170,16 @@
                 return false;
             }
 
-            var windowheight = $(window).height(),
-                elHeight = $('#manfred-content').outerHeight(),
-                diff = windowheight - elHeight;
+            var calcheight = $(window).height(),
+                elHeight = $('#manfred-content').outerHeight();
 
-            if(windowheight > elHeight && settings.position == 'center') {
+            if(settings.position === 'iframe'){
+                calcheight = $('body').height();
+            }
 
+            var diff = calcheight - elHeight;
+
+            if(calcheight > elHeight && settings.position == 'center') {
                 $('#manfred-content').css('margin-top', diff / 2);
             }
         }
@@ -180,7 +195,7 @@
     	// init
     	$('body:first').append($el);
     
-        this.bind('click', function(event){
+        $this.bind('click', function(event){
             event.preventDefault();
 
             $this = $(this);
@@ -193,7 +208,7 @@
         });
 
         $(window).resize(function(){
-            centerManfred();
+            positionManfred();
         });
         
         return this;

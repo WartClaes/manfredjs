@@ -35,7 +35,7 @@ $('a').manfred({
 Background color of the overlay, rgba and hex are supported
 
 ```javascript
-bgcolor: '#888888' | 'rgba(0,0,0,.7)'
+bgcolor: hex | rgb | rgba
 ```
 **bgopacity**  
 Opacity of the background color. only used when bcolor is hex
@@ -48,7 +48,7 @@ bgopacity: '60'
 Where does Manfred stay?
 
 ```javascript
-position: 'center'
+position: 'center' | 'iframe'
 ```
 
 ### Events 
@@ -56,22 +56,22 @@ position: 'center'
 Enable/disable the escape key to close Manfred
 
 ```javascript
-escape: true | false
+escape: boolean
 ```
 
 **bgclose**  
 Enable/disable closing Manfred by clicking on the overlay
 
 ```javascript
-bgclose: true | false
+bgclose: boolean
 ```
 
 ### Dimensions
-**autosize**
+**autosize**  
 Set dimensions according to content
 
 ```javascript
-autosize: true | false
+autosize: boolean
 ```
 
 **By data attribute**  
@@ -91,12 +91,12 @@ width: auto | px
 height: auto | px
 ```
 
-### The rest
+### Other settings
 **scroll**  
 Enable scroll inside Manfred
 
 ```javascript
-scroll: true | false
+scroll: boolean
 ```
 
 **speed**  
